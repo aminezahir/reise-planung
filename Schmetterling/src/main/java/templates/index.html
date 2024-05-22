@@ -1,32 +1,78 @@
-<!DOCTYPE html>
-<html lang="en">
+ <!DOCTYPE html>
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Startseite</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <title>Schmetterling</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>Willkommen auf der Startseite</h1>
-        <nav>
-            <ul>
-                <li><a href="/busse">Busse</a></li>
-                <li><a href="/fahrer">Fahrer</a></li>
-                <li><a href="/busreisen">Busreisen</a></li>
-                <li><a href="/passagiere">Passagiere</a></li>
-                <li><a href="/buchungen">Buchungen</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <section>
-            <h2>Über unsere Busreisen</h2>
-            <p>Hier können Sie Informationen über unsere Busreisen finden.</p>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2024 Busreise Webanwendung</p>
-    </footer>
+    <div th:include="~{layout :: content}"></div>
+    <div class="container">
+        <div class="jumbotron text-center my-4">
+            <h1 class="display-4">Schmetterling Busreise</h1>
+        </div>
+        <form>
+            <div class="form-row justify-content-center">
+                <div class="form-group col-md-2">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="tripType" id="oneWay" value="oneWay" checked>
+                        <label class="form-check-label" for="oneWay">Einfache Fahrt</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="tripType" id="roundTrip" value="roundTrip">
+                        <label class="form-check-label" for="roundTrip">Hin- und Rückfahrt</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row justify-content-center">
+                <div class="form-group col-md-3">
+                    <label for="fromCity">Von</label>
+                    <input type="text" class="form-control" id="fromCity" placeholder="Berlin">
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="toCity">Nach</label>
+                    <input type="text" class="form-control" id="toCity" placeholder="München">
+                </div>
+            </div>
+            <div class="form-row justify-content-center">
+                <div class="form-group col-md-3">
+                    <label for="departureDate">Hin</label>
+                    <input type="date" class="form-control" id="departureDate" value="2024-05-22">
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="passengers">Fahrgäste</label>
+                    <select class="form-control" id="passengers">
+                        <option>1 Erwachsene:r</option>
+                        <option>2 Erwachsene</option>
+                        <option>3 Erwachsene</option>
+                        <option>4 Erwachsene</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row justify-content-center">
+                <div class="col-md-2">
+                    <button type="submit" class="btn btn-success btn-block">Suchen</button>
+                </div>
+            </div>
+        </form>
+        <div class="form-row justify-content-center mt-3">
+            <div class="col-md-3 text-center">
+                <a href="#" class="btn btn-outline-secondary btn-block">Buchung verwalten</a>
+            </div>
+            <div class="col-md-3 text-center">
+                <a href="#" class="btn btn-outline-secondary btn-block">Echtzeit-Fahrtverfolgung</a>
+            </div>
+            <div class="col-md-3 text-center">
+                <a href="#" class="btn btn-outline-secondary btn-block">Hilfe</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>

@@ -1,50 +1,36 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
+    background-color: #f8f9fa;
 }
 
-header {
-    background-color: #333;
-    color: white;
-    padding: 10px 0;
-    text-align: center;
+.navbar {
+    background-color: #77dd77;
 }
 
-nav ul {
-    list-style-type: none;
-    padding: 0;
+.navbar-brand {
+    color: #fff !important;
 }
 
-nav ul li {
-    display: inline;
-    margin-right: 10px;
+.nav-link {
+    color: #fff !important;
 }
 
-nav ul li a {
-    color: white;
-    text-decoration: none;
-}
-
-main {
-    padding: 20px;
-}
-
-footer {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 10px 0;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-}
-
-section {
-    background-color: white;
-    padding: 20px;
-    margin: 20px 0;
+.jumbotron {
+    background-color: #fff;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.btn-success {
+    background-color: #77dd77;
+    border: none;
+}
+
+.btn-outline-secondary {
+    border-color: #77dd77;
+    color: #77dd77;
+}
+
+.btn-outline-secondary:hover {
+    background-color: #77dd77;
+    color: #fff;
 }

@@ -12,9 +12,13 @@ public class FahrerController {
     public FahrerController(Connection connection) {
         this.connection = connection;
     }
+    public void addSampleFahrers() {
+        addFahrer(new Fahrer(1, "Hans Müller", "D", 10, "+4917635237688"));
+        addFahrer(new Fahrer(2, "Peter Schmidt", "DE", 5, "+4917644256799"));
+    }
 
-    public void addFahrer(Fahrer fahrer) {
-        String sql = "INSERT INTO Fahrer (ID, Name, Führerscheinklasse, Erfahrungsjahre, Kontaktinformationen) VALUES (?, ?, ?, ?, ?)";
+    private void addFahrer(Fahrer fahrer) {
+        String sql = "INSERT INTO Fahrer (id, name, führerscheinklasse, erfahrungsjahre, kontaktinformationen) VALUES (?, ?, ?, ?, ?)";
         try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
             pstmt.setInt(1, fahrer.getId());
             pstmt.setString(2, fahrer.getName());
@@ -22,11 +26,9 @@ public class FahrerController {
             pstmt.setInt(4, fahrer.getErfahrungsjahre());
             pstmt.setString(5, fahrer.getKontaktinformationen());
             pstmt.executeUpdate();
-            System.out.println("Fahrer erfolgreich hinzugefügt.");
+            System.out.println("Fahrer erfolgreich hinzugefügt: " + fahrer.getName());
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
-
-    // Weitere CRUD-Operationen (lesen, aktualisieren, löschen) können hier hinzugefügt werden.
 }

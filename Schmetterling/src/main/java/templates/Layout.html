@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schmetterling Busreisen</title>
+    <style>
+        .navbar {
+            background-color: blue;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        Schmetterling Busreisen
+    </nav>
+
+    <main>
+        <div class="container">
+            <th:block th:replace="${content}"></th:block>
+        </div>
+    </main>
+    <footer>
+        &copy; 2024 Schmetterling Busreisen. Alle Rechte vorbehalten.
+    </footer>
+</body>
+</html>

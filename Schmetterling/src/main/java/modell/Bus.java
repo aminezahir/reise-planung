@@ -4,21 +4,21 @@ public class Bus {
     private int id;
     private String kennzeichen;
     private String zulassung;
-    private String tüvTermin;
-    private int gefahreneKM;
-    private double kostenProKM;
+    private String TÜV_Termin; 
+    private int Gefahrene_KM ;
+    private double Kosten_pro_KM;
     private String typ;
 
     // Konstruktoren
     public Bus() {}
 
-    public Bus(int id, String kennzeichen, String zulassung, String tüvTermin, int gefahreneKM, double kostenProKM, String typ) {
+    public Bus(int id, String kennzeichen, String zulassung, String TÜV_Termin, int Gefahrene_KM , double Kosten_pro_KM, String typ) {
         this.id = id;
         this.kennzeichen = kennzeichen;
         this.zulassung = zulassung;
-        this.tüvTermin = tüvTermin;
-        this.gefahreneKM = gefahreneKM;
-        this.kostenProKM = kostenProKM;
+        this.TÜV_Termin = TÜV_Termin;
+        this.Gefahrene_KM  = Gefahrene_KM ;
+        this.Kosten_pro_KM = Kosten_pro_KM;
         this.typ = typ;
     }
 
@@ -47,28 +47,29 @@ public class Bus {
         this.zulassung = zulassung;
     }
 
-    public String getTüvTermin() {
-        return tüvTermin;
+    public String getTÜV_Termin() {
+        return TÜV_Termin;
     }
 
-    public void setTüvTermin(String tüvTermin) {
-        this.tüvTermin = tüvTermin;
+    public void setTÜV_Termin(String TÜV_Termin) {
+        this.TÜV_Termin = TÜV_Termin;
     }
 
-    public int getGefahreneKM() {
-        return gefahreneKM;
+
+    public int getGefahrene_KM () {
+        return Gefahrene_KM ;
     }
 
-    public void setGefahreneKM(int gefahreneKM) {
-        this.gefahreneKM = gefahreneKM;
+    public void setGefahrene_KM(int Gefahrene_KM) {
+        this.Gefahrene_KM = Gefahrene_KM;
     }
 
-    public double getKostenProKM() {
-        return kostenProKM;
+    public double getKosten_pro_KM() {
+        return Kosten_pro_KM;
     }
 
-    public void setKostenProKM(double kostenProKM) {
-        this.kostenProKM = kostenProKM;
+    public void setKosten_pro_KM(double Kosten_pro_KM) {
+        this.Kosten_pro_KM = Kosten_pro_KM;
     }
 
     public String getTyp() {
