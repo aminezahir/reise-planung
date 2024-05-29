@@ -1,35 +1,27 @@
 package modell;
 
 public class Busreise {
-    private int id;
     private String fahrtbeginn;
     private String fahrtende;
+    private String Ort_Fahrtbeginn; 
     private String zielort;
-    private double kostenProPerson;
-    private int busId;
-    private int fahrerId;
+    private double Kosten_pro_Person;
+    private int Bus_ID;
+    private int Fahrer_ID;
 
-    // Konstruktoren
-    public Busreise() {}
 
-    public Busreise(int id, String fahrtbeginn, String fahrtende, String zielort, double kostenProPerson, int busId, int fahrerId) {
-        this.id = id;
-        this.fahrtbeginn = fahrtbeginn;
-        this.fahrtende = fahrtende;
-        this.zielort = zielort;
-        this.kostenProPerson = kostenProPerson;
-        this.busId = busId;
-        this.fahrerId = fahrerId;
-    }
-
-    // Getter und Setter
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
+        public Busreise(String fahrtbeginn, String fahrtende, String zielort, double kosten_pro_Person, int bus_ID, int fahrer_ID,String ort_Fahrtbeginn) {
+            this.fahrtbeginn = fahrtbeginn;
+            this.fahrtende = fahrtende;
+            this.Ort_Fahrtbeginn = ort_Fahrtbeginn;
+            this.zielort = zielort;
+            this.Kosten_pro_Person = kosten_pro_Person;
+            this.Bus_ID = bus_ID;
+            this.Fahrer_ID = fahrer_ID;
+        }
+    
+        // Getter und Setter
+    
 
     public String getFahrtbeginn() {
         return fahrtbeginn;
@@ -46,6 +38,13 @@ public class Busreise {
     public void setFahrtende(String fahrtende) {
         this.fahrtende = fahrtende;
     }
+    public String getOrt_Fahrtbeginn() {
+        return Ort_Fahrtbeginn;
+    }
+
+    public void setOrt_Fahrtbeginn(String Ort_Fahrtbeginn) {
+        this.Ort_Fahrtbeginn = Ort_Fahrtbeginn;
+    }
 
     public String getZielort() {
         return zielort;
@@ -55,27 +54,27 @@ public class Busreise {
         this.zielort = zielort;
     }
 
-    public double getKostenProPerson() {
-        return kostenProPerson;
+    public double getKosten_pro_Person() {
+        return Kosten_pro_Person;
     }
 
-    public void setKostenProPerson(double kostenProPerson) {
-        this.kostenProPerson = kostenProPerson;
+    public void setKosten_pro_Person(double Kosten_pro_Person) {
+        this.Kosten_pro_Person = Kosten_pro_Person;
     }
 
     public int getBusId() {
-        return busId;
+        return Bus_ID;
     }
 
-    public void setBusId(int busId) {
-        this.busId = busId;
+    public void setBusId(int Bus_ID) {
+        this.Bus_ID = Bus_ID;
     }
 
     public int getFahrerId() {
-        return fahrerId;
+        return Fahrer_ID;
     }
 
-    public void setFahrerId(int fahrerId) {
-        this.fahrerId = fahrerId;
+    public void setFahrer_ID(int fahrer_ID) {
+        this.Fahrer_ID = fahrer_ID;
     }
 }
