@@ -16,7 +16,6 @@ public class DButil {
 	            props.setProperty("encrypt", "false");
 	            props.setProperty("trustServerCertificate", "true");
 	            Connection connection = DriverManager.getConnection(connectionUrl, props);
-	            System.out.println("Die Verbindung zum SQL Server wurde erfolgreich hergestellt.");
 	            return connection;
 	        } catch (ClassNotFoundException | SQLException e) {
 	            e.printStackTrace();
