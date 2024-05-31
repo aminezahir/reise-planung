@@ -1,9 +1,12 @@
 package com.masai;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Scanner;
 
 public class Main {
@@ -47,8 +50,8 @@ public class Main {
                     continue;
                 }
 
-                System.out.println("1. Insert Bus Details");
-                System.out.println("2. Insert Vehicle Types");
+                System.out.println("1. Insert Reise Details");
+                System.out.println("2. Insert Fahrzeugtyp ");
                 System.out.println("3. Go back");
                 System.out.println("4. Exit");
 
@@ -99,16 +102,23 @@ public class Main {
                     System.out.println("Enter Entfernung in KM: ");
                     Float entfernung = sc.nextFloat();
 
-                    System.out.println("Enter Fahrdauer (in minutes): ");
-                    Integer fahrdauer = sc.nextInt();
-
+                    System.out.println("Enter Fahrdatum (YY-MM-DD): ");
+                    String fahrtdatumString = sc.next();                 
+                    Date fahrtdatum = null;
+                    try {
+                        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+                        java.util.Date parsed = format.parse(fahrtdatumString);
+                        fahrtdatum = new Date(parsed.getTime());
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
                     System.out.println("Enter Preis: ");
                     Double cost = sc.nextDouble();
 
-                    System.out.println("Enter Intermediate Stations (comma-separated, leave empty if none): ");
+                    System.out.println("Enter Intermediate Stations / none): ");
                     String intermediateStations = sc.next();
 
-                    String result = dao.insertBusDetails(fahrzeugId, fahrerName, source, destination, seats, arrivalTime, departureTime, entfernung, fahrdauer, cost, intermediateStations);
+                    String result = dao.insertBusDetails(fahrzeugId, fahrerName, source, destination, seats, arrivalTime, departureTime, entfernung, cost, intermediateStations, fahrtdatum);
 
                     System.out.println(result);
 
@@ -151,18 +161,21 @@ public class Main {
                         PreparedStatement ps = conn.prepareStatement("Select * from busdetails");
 
                         ResultSet rs = ps.executeQuery();
+                        System.out.println("------------------------------------------------------------------------------------------------------");
+                        System.out.println("F_Name        SEATS         Start_Ort        Ziel_Ort        F_Type         Kosten           Datum");
+                        System.out.println("------------------------------------------------------------------------------------------------------");
 
-                        System.out.println("BUSNO SEATS SOURCE  DESTINATION");
                         while (rs.next()) {
-
-                            System.out.print("  " + rs.getInt("busno") + "     ");
-
-                            System.out.print(rs.getInt("seats") + "   ");
-
-                            System.out.print(rs.getString("source") + "  ");
-                            System.out.print(rs.getString("destination"));
-
-                            System.out.println();
+                        	
+                            System.out.printf("%-13s %-13d %-15s %-15s %-15s €%-15s %s%n",
+                                    rs.getString("BusName"),
+                                    rs.getInt("Seats"),
+                                    rs.getString("Source"),
+                                    rs.getString("Destination"),
+                                    rs.getString("BusType"),
+                                    rs.getDouble("Kosten"),
+                                    rs.getDate("FahrtDatum"));
+                            System.out.println("------------------------------------------------------------------------------------------------------");
                         }
 
                     } catch (Exception e) {

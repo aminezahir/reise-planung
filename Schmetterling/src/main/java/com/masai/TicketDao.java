@@ -1,9 +1,11 @@
 // Source code is decompiled from a .class file using FernFlower decompiler.
 package com.masai;
+import java.sql.Date;
+
 import com.masai.TicketDaoImpl;
 
 public interface TicketDao {
-    String insertBusDetails(Integer fahrzeugId, String fahrerName, String source, String destination, Integer seats, String arrivalTime, String departureTime, Float entfernung, Integer fahrdauer, Double cost, String intermediateStations);
+    String insertBusDetails(Integer fahrzeugId, String fahrerName, String source, String destination, Integer seats, String arrivalTime, String departureTime, Float entfernung, Double cost, String intermediateStations, Date fahrtdatum);
 
 
    String confirmTicket(String var1, String var2, String var3, int var4);

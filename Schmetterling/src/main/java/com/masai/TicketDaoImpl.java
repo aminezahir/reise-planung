@@ -1,16 +1,16 @@
 package com.masai;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class TicketDaoImpl implements TicketDao {
 	@Override
-    public String insertBusDetails(Integer fahrzeugId, String fahrerName, String source, String destination, Integer seats, String arrivalTime, String departureTime, Float entfernung, Integer fahrdauer, Double cost, String intermediateStations) {
+    public String insertBusDetails(Integer fahrzeugId, String fahrerName, String source, String destination, Integer seats, String arrivalTime, String departureTime, Float entfernung, Double cost, String intermediateStations, Date fahrtdatum) {
         String message = "Not inserted!";
         try (Connection conn = DButil.provideConnection()) {
-            // Query to fetch BusType and fahrzeug_id from fahrzeugtypen table using fahrzeugId
             PreparedStatement psBusType = conn.prepareStatement("SELECT fahrzeugtyp, fahrzeug_id FROM fahrzeugtypen WHERE fahrzeug_id = ?");
             psBusType.setInt(1, fahrzeugId);
             ResultSet rsBusType = psBusType.executeQuery();
@@ -23,7 +23,7 @@ public class TicketDaoImpl implements TicketDao {
 
             if (busType != null) {
                 // Inserting data into busdetails table
-                PreparedStatement ps = conn.prepareStatement("INSERT INTO busdetails (BusName, Source, Destination, BusType, Seats, ArrivalTime, DepartureTime, Entfernung, Kosten, Zwischenstationen, Fahrtdauer, fahrzeugid) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                PreparedStatement ps = conn.prepareStatement("INSERT INTO busdetails (BusName, Source, Destination, BusType, Seats, ArrivalTime, DepartureTime, Entfernung, Kosten, Zwischenstationen, fahrzeugid , Fahrtdatum) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
                 ps.setString(1, fahrerName); // Set fahrerName as BusName
                 ps.setString(2, source);
                 ps.setString(3, destination);
@@ -34,11 +34,11 @@ public class TicketDaoImpl implements TicketDao {
                 ps.setFloat(8, entfernung);
                 ps.setDouble(9, cost);
                 ps.setString(10, intermediateStations);
-                ps.setInt(11, fahrdauer);
-                ps.setInt(12, fahrzeugid); // Set fahrzeug_id fetched from fahrzeugtypen table as fahrzeugid
+                ps.setInt(11, fahrzeugid);
+                ps.setDate(12, fahrtdatum);
                 int x = ps.executeUpdate();
                 if (x > 0) {
-                    message = "Bus Details Inserted Successfully!";
+                    message = "Reise Details Inserted Successfully!";
                 }
             } else {
                 message = "Invalid fahrzeugId!";

@@ -1,5 +1,8 @@
 package com.masai;
 
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Scanner;
 
 public class IntsertBusDetails {
@@ -28,13 +31,18 @@ public class IntsertBusDetails {
 
         System.out.println("Enter ArrivalTime: ");
         String arrivalTime = sc.next();
-
         System.out.println("Enter Entfernung in KM: ");
         Float entfernung = sc.nextFloat();
 
-        System.out.println("Enter Fahrdauer (in minutes): ");
-        Integer fahrdauer = sc.nextInt();
-
+        System.out.println("Enter Fahrdatum (in minutes): ");
+        String fahrtdatumString = sc.next();
+        
+        Date fahrtdatum = null;
+        try {
+            fahrtdatum = (Date) new SimpleDateFormat("yyyy-MM-dd").parse(fahrtdatumString);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         System.out.println("Enter Preis: ");
         Double cost = sc.nextDouble();
 
@@ -43,7 +51,7 @@ public class IntsertBusDetails {
 		
 		TicketDao dao = new TicketDaoImpl();
 		
-        String result = dao.insertBusDetails(fahrzeugId, fahrerName, source, destination, seats, arrivalTime, departureTime, entfernung, fahrdauer, cost, intermediateStations);
+        String result = dao.insertBusDetails(fahrzeugId, fahrerName, source, destination, seats, arrivalTime, departureTime, entfernung, cost, intermediateStations, fahrtdatum);
 		
 		System.out.println(result);
 		
